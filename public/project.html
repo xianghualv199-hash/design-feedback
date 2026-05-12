@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目详情 - 设计批注工具</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-back">← 返回列表</a>
+      <h1 class="nav-title" id="project-title">项目详情</h1>
+      <button class="btn btn-sm" onclick="deleteCurrentProject()" style="color:#e74c3c">删除</button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Share link bar -->
+    <div class="share-bar">
+      <div class="share-bar-inner">
+        <span style="white-space:nowrap">🔗 分享链接：</span>
+        <input type="text" id="project-share-link" class="share-input" readonly onclick="this.select()">
+        <button class="btn btn-sm" onclick="copyShareLink()">复制</button>
+        <button class="btn btn-sm" onclick="openReviewPage()">预览</button>
+      </div>
+    </div>
+
+    <div class="project-body">
+      <!-- Image with pins -->
+      <div class="project-image-area">
+        <div class="review-image-wrapper" id="project-image-wrapper">
+          <img id="project-image" alt="设计稿" style="display:none">
+          <div id="project-pins-container"></div>
+          <div class="loading" id="project-image-loading">加载中...</div>
+        </div>
+      </div>
+
+      <!-- Annotation sidebar -->
+      <aside class="review-sidebar" id="project-sidebar">
+        <div class="sidebar-header">
+          <h3>批注</h3>
+          <span id="project-count" class="badge">0</span>
+        </div>
+        <div class="sidebar-filters">
+          <button class="filter-btn active" data-filter="all" onclick="filterAnnotations('all')">全部</button>
+          <button class="filter-btn" data-filter="unresolved" onclick="filterAnnotations('unresolved')">待处理</button>
+          <button class="filter-btn" data-filter="resolved" onclick="filterAnnotations('resolved')">已完成</button>
+        </div>
+        <div id="project-annotations-list" class="annotations-list">
+          <div class="loading" style="padding:20px">加载中...</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    initProjectPage();
+  </script>
+</body>
+</html>

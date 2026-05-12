@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设计批注</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div id="review-app">
+    <!-- Top bar -->
+    <header class="review-header">
+      <div class="review-header-inner">
+        <div>
+          <h1 id="review-title" class="review-title">加载中...</h1>
+          <p id="review-client" class="review-client"></p>
+        </div>
+        <div class="review-header-info">
+          <span id="annotation-count" class="badge">0 条批注</span>
+          <button class="btn btn-sm" onclick="toggleSidebar()" id="toggle-sidebar-btn">☰ 列表</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="review-body">
+      <!-- Image area -->
+      <div class="review-image-area" id="image-area">
+        <div class="review-image-wrapper" id="image-wrapper">
+          <img id="review-image" alt="设计稿" style="display:none">
+          <div id="pins-container"></div>
+          <div class="loading" id="image-loading">加载设计稿中...</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="review-sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h3>批注列表</h3>
+          <span id="sidebar-count" class="badge">0</span>
+        </div>
+        <div id="annotations-list" class="annotations-list">
+          <div class="loading" style="padding:20px">加载中...</div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Comment dialog -->
+    <div id="comment-dialog" class="dialog-overlay" style="display:none">
+      <div class="dialog" style="max-width:400px">
+        <h3>添加批注</h3>
+        <div class="form-group">
+          <label>你的名字</label>
+          <input type="text" id="dialog-author" placeholder="输入你的称呼">
+        </div>
+        <div class="form-group">
+          <label>修改建议 *</label>
+          <textarea id="dialog-comment" rows="3" placeholder="例如：Logo 再放大一点，颜色偏暖一点..." required></textarea>
+        </div>
+        <div class="dialog-actions">
+          <button class="btn" onclick="closeDialog()">取消</button>
+          <button class="btn btn-primary" onclick="submitAnnotation()">提交</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" style="display:none"></div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    initReviewPage();
+  </script>
+</body>
+</html>

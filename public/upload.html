@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新建项目 - 设计批注工具</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-back">← 返回</a>
+      <h1 class="nav-title">新建项目</h1>
+      <div></div>
+    </div>
+  </nav>
+
+  <main class="container" style="max-width:600px">
+    <form id="upload-form" class="upload-form">
+      <div class="form-group">
+        <label>项目名称 *</label>
+        <input type="text" name="title" required placeholder="例如：品牌海报 V3">
+      </div>
+      <div class="form-group">
+        <label>客户名称</label>
+        <input type="text" name="clientName" placeholder="例如：张总 / 王经理">
+      </div>
+      <div class="form-group">
+        <label>上传设计稿 *</label>
+        <div class="drop-zone" id="drop-zone">
+          <div class="drop-zone-text">
+            <span class="drop-icon">📁</span>
+            <p>拖拽文件到此处，或点击选择</p>
+            <p class="drop-hint">支持 PNG / JPG / GIF / WebP，最大 100MB</p>
+          </div>
+          <div class="drop-zone-preview" id="drop-preview" style="display:none">
+            <img id="preview-img" alt="预览">
+            <button type="button" class="btn btn-sm" id="change-file-btn">更换文件</button>
+          </div>
+          <input type="file" name="file" accept="image/*" id="file-input" style="display:none" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" id="submit-btn" disabled>
+        上传并生成链接
+      </button>
+    </form>
+
+    <div id="result-card" class="result-card" style="display:none">
+      <div class="result-icon">✅</div>
+      <h2>项目已创建！</h2>
+      <p>将此链接发给客户：</p>
+      <div class="share-link-box">
+        <input type="text" id="share-link" readonly onclick="this.select()">
+        <button class="btn btn-sm" onclick="copyShareLink()">复制</button>
+      </div>
+      <div class="result-actions">
+        <a href="/" class="btn">返回列表</a>
+        <button class="btn btn-primary" onclick="openReviewPage()">预览客户视角</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    initUploadForm();
+  </script>
+</body>
+</html>

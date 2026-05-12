@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设计批注工具</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <h1 class="nav-title">📋 设计批注</h1>
+      <a href="/upload" class="btn btn-primary">+ 新建项目</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div id="project-list" class="project-grid">
+      <div class="loading">加载中...</div>
+    </div>
+    <div id="empty-state" class="empty-state" style="display:none">
+      <div class="empty-icon">🎨</div>
+      <h2>还没有项目</h2>
+      <p>上传你的设计稿，生成分享链接发给客户</p>
+      <a href="/upload" class="btn btn-primary btn-lg">上传第一个设计</a>
+    </div>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    loadDashboard();
+  </script>
+</body>
+</html>
