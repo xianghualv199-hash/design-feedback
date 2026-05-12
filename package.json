@@ -4,8 +4,8 @@
   "description": "设计稿批注工具 —— 给客户发链接，在线标注反馈",
   "main": "server.js",
   "scripts": {
-    "start": "node start.js",
-    "server": "node server.js"
+    "start": "node server.js",
+    "dev": "node start.js"
   },
   "dependencies": {
     "express": "^4.18.2",
